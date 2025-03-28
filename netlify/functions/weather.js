@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async (event) => {
+export async function handler(event) {
   const { city } = event.queryStringParameters;
   const API_KEY = process.env.API_KEY;
 
@@ -27,4 +27,4 @@ exports.handler = async (event) => {
       body: JSON.stringify({ error: 'Failed to fetch weather data' }),
     };
   }
-};
+}
