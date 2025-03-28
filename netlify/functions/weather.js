@@ -1,3 +1,10 @@
+exports.handler = async function () {
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ apiKey: process.env.API_KEY }),
+  };
+};
+
 exports.handler = async (event, context) => {
   const { city } = event.queryStringParameters;
   const API_KEY = process.env.API_KEY;

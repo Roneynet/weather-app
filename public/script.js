@@ -3,6 +3,13 @@ const searchBtn = document.getElementById('search-btn');
 const cityInput = document.getElementById('city-input');
 const weatherInfo = document.getElementById('weather-info');
 
+fetch('/.netlify/functions/weather')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Your API Key:', data.apiKey);
+  })
+  .catch((error) => console.error('Error fetching API key:', error));
+
 searchBtn.addEventListener('click', async () => {
   const city = cityInput.value.trim();
   if (city) {
