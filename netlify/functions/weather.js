@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 export async function handler(event) {
   const { city } = event.queryStringParameters;
   const API_KEY = process.env.API_KEY;
