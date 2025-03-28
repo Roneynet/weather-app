@@ -1,6 +1,6 @@
 export async function handler(event) {
   const { city } = event.queryStringParameters;
-  const API_KEY = process.env.API_KEY;
+  const API_KEY = process.env.WEATHER_API_KEY;
 
   if (!city) {
     return {
