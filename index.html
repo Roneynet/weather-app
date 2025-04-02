@@ -3,22 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
+    <title>Weather App | Roney Oliveira</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="weather-container">
-      <h1>Weather App</h1>
-      <div class="search">
-        <input type="text" placeholder="Enter city..." id="city-input" />
-        <button id="search-btn">Search</button>
-      </div>
-      <div class="weather-result">
-        <div id="weather-info">
-          <!-- Data will appear here via JavaScript -->
+    <header>
+      <h1>Roney Oliveira</h1>
+      <p>Software Engineer</p>
+      <button id="dark-mode-toggle" class="dark-mode-btn">
+        <span>🌙</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="weather-card">
+        <h2>Weather App</h2>
+        <div class="search-container">
+          <input
+            type="text"
+            id="city-input"
+            placeholder="Enter city name..."
+            aria-label="City name"
+          />
+          <button id="search-btn" class="btn">Search</button>
         </div>
-      </div>
-    </div>
+        <div id="weather-info">
+          <!-- Weather data will appear here -->
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          Email me at
+          <a href="mailto:roneynet4ever@hotmail.com"
+            >roneynet4ever@hotmail.com</a
+          >
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Roney Oliveira</p>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
