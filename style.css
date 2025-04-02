@@ -20,6 +20,9 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--light-bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ===== Header (Matched to Portfolio) ===== */
@@ -67,21 +70,55 @@ h3 {
   color: var(--primary-color);
 }
 
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background: #2980b9;
+}
+
 /* ===== Weather Card ===== */
 .weather-card {
   background: var(--white);
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: var(--box-shadow);
-  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  max-width: 500px;
   margin: 2rem auto;
-  min-height: 60vh;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
 }
 
 .weather-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.weather-header {
+  margin-bottom: 1.5rem;
+  position: relative;
 }
 
 /* ===== Detail Cards ===== */
@@ -160,16 +197,27 @@ h3 {
 }
 
 .weather-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  margin: -20px auto 0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
-.temperature {
-  font-size: 2.5rem;
-  font-weight: bold;
+.temperature-display {
+  font-size: 3.5rem;
+  font-weight: 300;
   margin: 0.5rem 0;
   color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+}
+
+.temperature-display::after {
+  content: '°C';
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0.5rem;
+  right: -1.2rem;
 }
 
 .weather-details {
@@ -183,6 +231,71 @@ h3 {
   background: rgba(0, 0, 0, 0.05);
   padding: 0.75rem;
   border-radius: 5px;
+}
+
+.weather-condition {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.weather-meta {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.weather-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weather-meta-item svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--primary-color);
+}
+
+/* Loading and Error States */
+.loading-state,
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid var(--primary-color);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.error-state svg {
+  margin-bottom: 1rem;
+}
+
+.error-state p {
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* ===== Contact Section (Matched to Portfolio) ===== */
@@ -247,15 +360,37 @@ footer a:hover {
 .dark-mode #contact {
   background: #1e1e1e;
   color: #e0e0e0;
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .weather-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 .dark-mode .weather-details p {
   background: rgba(255, 255, 255, 0.1);
 }
 
+.dark-mode .weather-condition {
+  color: #e0e0e0;
+}
+
+.dark-mode .weather-meta-item svg {
+  fill: #a670ff;
+}
+
 .dark-mode .temperature {
   color: #a670ff;
+}
+
+.dark-mode .temperature-display {
+  color: #a670ff;
+}
+
+.dark-mode #city-input {
+  background: #333;
+  color: #fff;
+  border-color: #444;
 }
 
 .dark-mode #search-btn {
