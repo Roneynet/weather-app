@@ -26,7 +26,7 @@ const MAX_CITY_LENGTH = 50;
 // Example data for initial display - "My City" with clear sky
 const exampleData = {
   name: 'Example',
-  sys: { country: 'UK' },
+  sys: { country: 'GB' },
   main: {
     temp: 28,
     feels_like: 26,
